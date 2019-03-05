@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name></display-name>	
+  
+  
+   <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+   </welcome-file-list>
+	
+  	<filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    
+    
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+  <!-- 每隔一小时获取一次access_Token用于分享接口的签名生成 -->
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getAccessToken</servlet-name>
+    <servlet-class>Thread.getAccessToken</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <!-- 定时保存每个人的每日最高分数 -->
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SaveGameMaxNum</servlet-name>
+    <servlet-class>Thread.SaveGameMaxNum</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>getAccessToken</servlet-name>
+    <url-pattern>/getAccessToken</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SaveGameMaxNum</servlet-name>
+    <url-pattern>/SaveGameMaxNum</url-pattern>
+  </servlet-mapping>
+
+</web-app>

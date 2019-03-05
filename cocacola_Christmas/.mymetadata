@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="cocacola_Christmas"
+  id="myeclipse.1449197787927"
+  context-root="/cocacola_Christmas"
+  j2ee-spec="5.0"
+  archive="cocacola_Christmas.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

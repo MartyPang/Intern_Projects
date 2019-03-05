@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="game" namespace="/game" extends="default" >	
+		<!-- 分享来源游戏入口  -->
+		<action name="start" class="com.sinocontact.action.WXDateAction" method="start">
+			<result name="success" >/index.jsp</result>
+		</action>	
+	
+		<!-- 跳转到游戏首页  -->
+		<action name="preStart" class="com.sinocontact.action.WXDateAction" method="preStart">
+			<result name="success" type="redirectAction">
+			<param name="actionName">getSHA1</param>
+			</result>
+			<result name="login">/index.jsp</result>
+		</action>	
+		
+		<!-- 跳转到游戏页面  -->
+		<action name="gameStart" class="com.sinocontact.action.WXDateAction" method="gameStart">
+			<result name="success" type="redirectAction">
+			<param name="actionName">getSHA1</param>
+			</result>
+			<interceptor-ref name="checkSharePage" />
+		</action>	
+		
+		<!-- 跳转到游戏页面  -->
+		<action name="getSHA1" class="com.sinocontact.action.WXDateAction" method="getSHA1">
+			<result name="gameHome">/WEB-INF/GameStart/GameStart.jsp</result>
+			<result name="gameStart">/WEB-INF/GameStart/Game.jsp</result>
+			<result name="instructions">/WEB-INF/GameStart/instructions.jsp</result>
+			<result name="theHighest">/WEB-INF/GameStart/theHighest.jsp</result>
+			<interceptor-ref name="checkSharePage" />
+			<interceptor-ref name="AddUserLog" />	
+		</action>	
+		
+		<!-- 跳转到游戏章程  -->
+		<action name="instructions" class="com.sinocontact.action.WXDateAction" method="instructions">
+			<result name="success" type="redirectAction">
+			<param name="actionName">getSHA1</param>
+			</result>
+			<interceptor-ref name="checkSharePage" />
+		</action>	
+		
+		
+		<!-- 跳转到游戏最高分页面  -->
+		<action name="theHighest" class="com.sinocontact.action.WXDateAction" method="theHighest">
+			<result name="success" type="redirectAction">
+			<param name="actionName">getSHA1</param>
+			</result>
+			<interceptor-ref name="checkSharePage" />
+		</action>	
+		
+		<!-- 添加游戏记录  -->
+		<action name="addGameNum" class="com.sinocontact.action.WXDateAction" method="addGameNum">
+		</action>	
+		
+		<!-- 添加添加分享操作日志  -->
+		<action name="addShareLog" class="com.sinocontact.action.WXDateAction" method="addShareLog">
+		</action>	
+	</package>
+</struts>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	
+<struts>
+   <include file="struts-default.xml" />  
+   <package name="mixxo" namespace="/" extends="struts-default" >	
+		<!-- 跳转到活动首页  -->
+		<action name="preStart" class="com.sinocontact.action.StartAction" method="preStart">
+			<result name="success">/home.jsp</result>
+		</action>
+		
+		<!-- 微信授权，获取优惠券列表 -->
+		<action name="couponList" class="com.sinocontact.action.StartAction" method="getCouponList">
+            <result name="success">/WEB-INF/views/list.jsp</result>
+		</action>
+
+		<!-- 跳转到注册页面  -->
+		<action name="jump" class="com.sinocontact.action.StartAction" method="jump">
+			<result name="success">/WEB-INF/views/form.jsp</result>
+		</action>
+		
+		<!-- 跳转到拼图页面  -->
+		<action name="jump2" class="com.sinocontact.action.StartAction" method="jump2">
+			<result name="success">/WEB-INF/views/puzzle.jsp</result>
+		</action>
+		
+		<!-- 跳转到分享拼图页面  -->
+		<action name="mediumLink" class="com.sinocontact.action.StartAction" method="mediumLink">
+			<result name="success">/puzzleShare.jsp</result>
+		</action>
+		
+		<!-- 检测该frined_id是否已经帮忙解锁 -->
+		<action name="checkUnlockable" class="com.sinocontact.action.SubmitAction" method="checkUnlockable">
+		</action>
+		
+	    <!-- 检测该open_id是否已经绑定过手机号 -->
+		<action name="checkOpenid" class="com.sinocontact.action.SubmitAction" method="checkOpenid">
+		</action>
+		
+		<!-- 检测目前敲章个数 -->
+		<action name="checkBadgeNumber" class="com.sinocontact.action.SubmitAction" method="checkBadgeNumber">
+		</action>
+		
+		<!-- 发送手机验证码 -->
+		<action name="sendSMScode" class="com.sinocontact.action.SubmitAction" method="sendSMScode">
+		</action>
+		
+		<!-- 朋友帮忙解锁一块拼图  -->
+		<action name="unlockOnePiece" class="com.sinocontact.action.SubmitAction" method="unlockOnePiece">
+		</action>
+		
+		<!-- 使用优惠券  -->
+		<action name="useCoupon" class="com.sinocontact.action.SubmitAction" method="useCoupon">
+		
+		</action>
+		
+		<!-- 提交表单 -->
+		<action name="submit" class="com.sinocontact.action.SubmitAction" method="submit">
+		</action>
+   </package>
+</struts>
